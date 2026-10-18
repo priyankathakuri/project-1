@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="The story behind this little corner of the internet." />
+  <title>About · littlehello</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+    :root { color-scheme: dark; --ink:#f5f5ff; --muted:#a3a9c2; --pink:#ff8fbd; --cyan:#73e5ee; }
+    * { box-sizing:border-box; } body { min-height:100vh; margin:0; display:grid; place-items:center; color:var(--ink); background:radial-gradient(ellipse at 18% 18%,rgba(116,87,207,.21),transparent 34rem),radial-gradient(ellipse at 84% 82%,rgba(35,178,189,.14),transparent 35rem),#0b1020; font-family:Manrope,ui-sans-serif,system-ui,sans-serif; }
+    body::before { content:''; position:fixed; inset:0; pointer-events:none; opacity:.16; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); }
+    main { position:relative; width:min(920px,calc(100% - 40px)); padding:clamp(2rem,7vw,5.5rem); border:1px solid rgba(255,255,255,.13); border-radius:30px; background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025)); box-shadow:0 32px 100px rgba(0,0,0,.4),inset 0 1px rgba(255,255,255,.12); backdrop-filter:blur(18px); animation:arrive .8s ease both; }
+    @keyframes arrive { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+    .site-nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:0 0 4rem; }
+    .brand { color:var(--ink); text-decoration:none; font-size:.9rem; font-weight:800; letter-spacing:-.04em; } .brand b { color:var(--cyan); }
+    .nav-links { display:flex; gap:.35rem; } .nav-links a { padding:.6rem .85rem; border-radius:999px; color:#b0b5ca; text-decoration:none; font-size:.78rem; font-weight:700; transition:color .2s,background .2s; }
+    .nav-links a:hover,.nav-links a[aria-current="page"] { color:var(--ink); background:rgba(255,255,255,.09); }
+    a:focus-visible { outline:2px solid var(--cyan); outline-offset:3px; }
+    .eyebrow { color:#c7c9dd; font:500 .72rem 'DM Mono',monospace; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { margin:1.2rem 0; font-size:clamp(3.8rem,10vw,7rem); line-height:.96; letter-spacing:-.09em; }
+    h1 span { color:transparent; background:linear-gradient(100deg,var(--pink),#d39cff 52%,var(--cyan)); background-clip:text; -webkit-background-clip:text; }
+    .copy { max-width:650px; color:var(--muted); font-size:clamp(1rem,2vw,1.13rem); line-height:1.9; }
+    .note { display:flex; align-items:center; gap:1rem; margin-top:2.5rem; padding:1.2rem 1.4rem; border:1px solid rgba(255,255,255,.1); border-radius:16px; color:#d6d9e8; background:rgba(255,255,255,.035); font-size:.88rem; }
+    .note span { color:var(--cyan); font-size:1.3rem; }
+    .footer { margin-top:3.5rem; color:#737b97; font: .67rem 'DM Mono',monospace; letter-spacing:.07em; text-transform:uppercase; }
+    @media(max-width:560px) { main { padding:2rem 1.4rem; border-radius:23px; } .site-nav { margin-bottom:3rem; } .nav-links a { padding:.55rem .6rem; font-size:.72rem; } }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">little<b>hello</b></a>
+      <div class="nav-links"><a href="index.html">Home</a><a href="about.html" aria-current="page">About</a><a href="contact.html">Contact</a></div>
+    </nav>
+    <div class="eyebrow">A little about this place</div>
+    <h1>Made with<br><span>curiosity.</span></h1>
+    <p class="copy">This tiny corner of the web began with one simple idea: a first hello should feel like the start of something good. So we gave it a little color, a little motion, and room to grow.</p>
+    <p class="copy">Whether you landed here by chance or followed a link, we’re glad you stopped by. Take a look around—and if you have an idea to share, we’d love to hear it.</p>
+    <div class="note"><span aria-hidden="true">✳</span><div>Small beginnings can lead to wonderful things.</div></div>
+    <div class="footer">A small page, made with care</div>
+  </main>
+</body>
+</html>

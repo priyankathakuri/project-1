@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="Get in touch and say hello." />
+  <title>Contact · littlehello</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+    :root { color-scheme:dark; --ink:#f5f5ff; --muted:#a3a9c2; --pink:#ff8fbd; --cyan:#73e5ee; }
+    * { box-sizing:border-box; } body { min-height:100vh; margin:0; display:grid; place-items:center; color:var(--ink); background:radial-gradient(ellipse at 18% 18%,rgba(116,87,207,.21),transparent 34rem),radial-gradient(ellipse at 84% 82%,rgba(35,178,189,.14),transparent 35rem),#0b1020; font-family:Manrope,ui-sans-serif,system-ui,sans-serif; }
+    body::before { content:''; position:fixed; inset:0; pointer-events:none; opacity:.16; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); }
+    main { position:relative; width:min(920px,calc(100% - 40px)); padding:clamp(2rem,7vw,5.5rem); border:1px solid rgba(255,255,255,.13); border-radius:30px; background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025)); box-shadow:0 32px 100px rgba(0,0,0,.4),inset 0 1px rgba(255,255,255,.12); backdrop-filter:blur(18px); animation:arrive .8s ease both; }
+    @keyframes arrive { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+    .site-nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:0 0 4rem; }
+    .brand { color:var(--ink); text-decoration:none; font-size:.9rem; font-weight:800; letter-spacing:-.04em; } .brand b { color:var(--cyan); }
+    .nav-links { display:flex; gap:.35rem; } .nav-links a { padding:.6rem .85rem; border-radius:999px; color:#b0b5ca; text-decoration:none; font-size:.78rem; font-weight:700; transition:color .2s,background .2s; }
+    .nav-links a:hover,.nav-links a[aria-current="page"] { color:var(--ink); background:rgba(255,255,255,.09); }
+    a:focus-visible,button:focus-visible { outline:2px solid var(--cyan); outline-offset:3px; }
+    .eyebrow { color:#c7c9dd; font:500 .72rem 'DM Mono',monospace; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { margin:1.2rem 0 1rem; font-size:clamp(3.8rem,10vw,7rem); line-height:.96; letter-spacing:-.09em; }
+    h1 span { color:transparent; background:linear-gradient(100deg,var(--pink),#d39cff 52%,var(--cyan)); background-clip:text; -webkit-background-clip:text; }
+    .copy { max-width:580px; margin:0 0 2rem; color:var(--muted); font-size:clamp(1rem,2vw,1.13rem); line-height:1.85; }
+    .contact-card { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; max-width:620px; padding:1.2rem 1.35rem; border:1px solid rgba(255,255,255,.1); border-radius:16px; background:rgba(255,255,255,.035); }
+    .label { display:block; margin-bottom:.35rem; color:#8188a5; font: .68rem 'DM Mono',monospace; letter-spacing:.1em; text-transform:uppercase; }
+    .email { color:var(--ink); text-decoration:none; font-size:1rem; font-weight:700; } .email:hover { color:var(--cyan); }
+    button { padding:.75rem 1rem; border:0; border-radius:10px; color:#111426; background:linear-gradient(110deg,#ff9fc8,#c2a8ff 58%,#8be8ec); font:800 .8rem Manrope,sans-serif; cursor:pointer; transition:transform .2s; }
+    button:hover { transform:translateY(-2px); }
+    .hint { min-height:1.2em; margin-top:.8rem; color:#8188a5; font:.72rem 'DM Mono',monospace; }
+    .footer { margin-top:3.5rem; color:#737b97; font:.67rem 'DM Mono',monospace; letter-spacing:.07em; text-transform:uppercase; }
+    @media(max-width:560px) { main { padding:2rem 1.4rem; border-radius:23px; } .site-nav { margin-bottom:3rem; } .nav-links a { padding:.55rem .6rem; font-size:.72rem; } }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">little<b>hello</b></a>
+      <div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html" aria-current="page">Contact</a></div>
+    </nav>
+    <div class="eyebrow">Your turn to say hello</div>
+    <h1>Let’s talk<span>.</span></h1>
+    <p class="copy">Have a question, an idea, or just want to say hi? Drop a note. Good conversations often start with a simple hello.</p>
+    <div class="contact-card">
+      <div><span class="label">Send a note</span><a class="email" href="mailto:hello@example.com">hello@example.com</a></div>
+      <button id="copyEmail" type="button">Copy email</button>
+    </div>
+    <div class="hint" id="hint" aria-live="polite"></div>
+    <div class="footer">The inbox is always open</div>
+  </main>
+  <script>
+    const copyButton = document.querySelector('#copyEmail');
+    const hint = document.querySelector('#hint');
+    copyButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('hello@example.com');
+        hint.textContent = 'Email address copied ✨';
+      } catch {
+        hint.textContent = 'Select hello@example.com to copy it.';
+      }
+    });
+  </script>
+</body>
+</html>
