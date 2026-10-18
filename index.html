@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="A little hello, with a little extra sparkle." />
+  <title>Hello, World!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      color-scheme: dark;
+      --ink: #f5f5ff;
+      --muted: #a3a9c2;
+      --pink: #ff8fbd;
+      --violet: #a994ff;
+      --cyan: #73e5ee;
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 18% 18%, rgba(116, 87, 207, .21), transparent 34rem),
+        radial-gradient(ellipse at 84% 82%, rgba(35, 178, 189, .14), transparent 35rem),
+        #0b1020;
+      font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    }
+
+    .orb {
+      position: fixed;
+      width: 21rem;
+      aspect-ratio: 1;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: drift 16s ease-in-out infinite alternate;
+    }
+    .orb::before, .orb::after {
+      content: '';
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 50%;
+      inset: 1.7rem;
+    }
+    .orb::after { inset: 3.5rem; }
+    .orb.one { top: -12rem; right: -7rem; }
+    .orb.two { bottom: -15rem; left: -8rem; width: 28rem; animation-delay: -7s; }
+    @keyframes drift { to { transform: translate3d(22px, 18px, 0) rotate(14deg); } }
+
+    main {
+      position: relative;
+      width: min(920px, calc(100% - 40px));
+      padding: clamp(2rem, 7vw, 5.5rem);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(255,255,255,.085), rgba(255,255,255,.025));
+      box-shadow: 0 32px 100px rgba(0,0,0,.4), inset 0 1px rgba(255,255,255,.12);
+      backdrop-filter: blur(18px);
+      animation: arrive .9s cubic-bezier(.2,.8,.2,1) both;
+    }
+    @keyframes arrive { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: none; } }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      color: #c7c9dd;
+      font: 500 .72rem 'DM Mono', monospace;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .spark { color: var(--cyan); font-size: 1rem; animation: twinkle 2.5s ease-in-out infinite; }
+    @keyframes twinkle { 50% { opacity: .38; transform: scale(.75) rotate(30deg); } }
+
+    h1 {
+      max-width: 760px;
+      margin: 1.35rem 0 1rem;
+      font-size: clamp(4rem, 12vw, 8.7rem);
+      line-height: .93;
+      letter-spacing: -.09em;
+      font-weight: 800;
+    }
+    h1 span {
+      display: block;
+      padding-right: .12em;
+      color: transparent;
+      background: linear-gradient(100deg, var(--pink) 4%, #d39cff 47%, var(--cyan) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+    .intro {
+      max-width: 510px;
+      margin: 1.6rem 0 2.2rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.13rem);
+      line-height: 1.8;
+    }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem; }
+    button {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      padding: .95rem 1.2rem;
+      border: 0;
+      border-radius: 12px;
+      color: #111426;
+      background: linear-gradient(110deg, #ff9fc8, #c2a8ff 58%, #8be8ec);
+      box-shadow: 0 8px 28px rgba(169,148,255,.22);
+      font: 800 .93rem 'Manrope', sans-serif;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    button:hover { transform: translateY(-3px); box-shadow: 0 12px 34px rgba(169,148,255,.34); }
+    button:active { transform: translateY(-1px); }
+    button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+    .hint { color: #8188a5; font: .75rem 'DM Mono', monospace; }
+    .footer {
+      position: absolute;
+      right: clamp(2rem, 7vw, 5.5rem);
+      bottom: 1.5rem;
+      color: #737b97;
+      font: .67rem 'DM Mono', monospace;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 560px) {
+      body { overflow: auto; }
+      main { padding: 2.5rem 1.7rem 4.5rem; border-radius: 23px; }
+      .footer { right: 1.7rem; bottom: 1.2rem; }
+      .hint { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="orb one" aria-hidden="true"></div>
+  <div class="orb two" aria-hidden="true"></div>
+  <main>
+    <div class="eyebrow"><span class="spark" aria-hidden="true">✳</span> A tiny page with big energy</div>
+    <h1>Hello,<span>World!</span></h1>
+    <p class="intro">A fresh little corner of the internet. Built with curiosity, a touch of color, and the belief that every great thing starts with a hello.</p>
+    <div class="actions">
+      <button id="helloButton" type="button"><span aria-hidden="true">✦</span> Say hello</button>
+      <span class="hint" id="hint" aria-live="polite">Go on, give it a try ↗</span>
+    </div>
+    <div class="footer">Made for the moment <span aria-hidden="true">·</span> 01 / 01</div>
+  </main>
+  <script>
+    const button = document.querySelector('#helloButton');
+    const hint = document.querySelector('#hint');
+    button.addEventListener('click', () => {
+      hint.textContent = 'Hello right back at you ✨';
+      button.innerHTML = '<span aria-hidden="true">✓</span> Hello received';
+    });
+  </script>
+</body>
+</html>
